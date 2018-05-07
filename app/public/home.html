@@ -13,9 +13,9 @@
 
 
   <!-- Bootstrap latest compiled and minified CSS -->
-  <link rel="stylesheet" type="text/css" href="reset.css">
+  <link rel="stylesheet" type="text/css" href="./reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
   
   
   <!-- Firebase reference --> 
@@ -23,10 +23,14 @@
 </head> 
 
 <body>
-  <div class="jumbotron">Jumbotron will prove bootstrap is connected</div>
-  <p class="text-center">
-    this text should be blue to show that CSS is hooked up
-  </p>
+  <div class="jumbotron">
+    <h1>Find a cool new friend today!</h1>
+    <hr>
+    <!-- Button will send to survey.html when clicked -->
+    <button class="btn-success" onclick="location.href='./survey.html'">Start Survey!</button>
+  </div>
+  <div id = "testdiv"></div>
+  
 
 
   <!-- jQuery Google CDN -->
@@ -36,7 +40,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <!-- Javascript reference -->
-  <script type="text/javascript" src="assets/javascript/server.js"></script>
+  <script type="text/javascript" src="../../server.js"></script>
 
   <!-- Link to Moment.js should go here -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -59,9 +63,12 @@
             console.log("--------------------------------------");
             console.log(friendZone);
             console.log("--------------------------------------");
+            
         });
     }
     runFriendsQuery();
+
+    
   </script>
 
 </body>

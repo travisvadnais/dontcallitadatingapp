@@ -1,3 +1,33 @@
-p.text-center {
-    color: blue;
+
+.jumbotron {
+    margin-top: 5px;
+    display: flex;
 }
+
+button.btn-success {
+    cursor: pointer;
+}
+
+div#fullSurvey {
+    display: flex;
+    flex-direction: column;
+}
+
+.quesText {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+input {
+    border-radius: 5%;
+    padding: 5px;
+}
+
+select.form-control {
+    max-width: 300px;
+}
+
+.form-group {
+    margin-top: -20px;
+}
+

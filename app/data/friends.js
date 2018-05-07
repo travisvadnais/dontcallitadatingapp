@@ -5,7 +5,7 @@ var friendZone = [
     //Start w/ a default user for testing
     {
         userName: 'CoolGuy4U',
-        photo: '',
+        photo: 'http://i0.kym-cdn.com/entries/icons/mobile/000/009/754/PhotogenicGuy.jpg',
         gender: 'male',
         scores: [
             5,
@@ -18,6 +18,21 @@ var friendZone = [
             5,
             4,
             1
+        ]
+    },{
+        userName: 'oneSweetChick',
+        photo: '',
+        gender: 'female',
+        scores: [
+            4,
+            2,
+            3,
+            3,
+            5,
+            1,
+            3,
+            4,
+            3
         ]
     }
 ];

@@ -13,9 +13,9 @@
 
 
   <!-- Bootstrap latest compiled and minified CSS -->
-  <link rel="stylesheet" type="text/css" href="reset.css">
+  <link rel="stylesheet" type="text/css" href="./reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
   
   
   <!-- Firebase reference --> 
@@ -23,10 +23,43 @@
 </head> 
 
 <body>
-  <div class="jumbotron">Jumbotron will prove bootstrap is connected</div>
-  <p class="text-center">
-    this text should be blue to show that CSS is hooked up
-  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="jumbotron">
+          <h2>Answer Truthfully to Get the Best Match!</h2><hr>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>About You</h3><hr>
+        <h5>First and Last Name (Required)</h5>
+        <input id="username" type="text" name="name" required placeholder="Enter Your Full Name" size="50"><br><br>
+        <h5>Your Profile Pic</h5>
+        <input id="photo" type="text" name="pic" required placeholder="Link to Your Profile Photo" size="100"><br><br>
+        <h5>Gender</h5>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1"></label>
+            <select class="form-control" id="gender">
+              <option value="">Select an Answer</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+        </div>
+              
+        <hr>
+        <div id="fullSurvey"></div>
+      </div>
+    </div>
+    <input id="submitSurvey" class="btn btn-primary" type="submit" value="Submit">
+  </div>
+
+
+  
+  
 
 
   <!-- jQuery Google CDN -->
@@ -36,65 +69,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <!-- Javascript reference -->
-  <script type="text/javascript" src="assets/javascript/server.js"></script>
+  <script type="text/javascript" src="../../server.js"></script>
+  <script type="text/javascript" src="./logic.js"></script>
 
   <!-- Link to Moment.js should go here -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-  <!-- This will tell the browser what to do with the survey inputs -->
-  <script type = "text/javascript">
-
-    //When the user submits . . . . 
-    $(".submit").on("click", function() {
-      
-      //Set all of his/her data to the the newFriend object
-      var newFriend = {
-        userName: $("#username").val().trim(),
-        photo: $("#photo").val().trim(),
-        gender: $("#gender").val().trim(),
-        scores: [
-          $("#q1").val(),
-          $("#q2").val(),
-          $("#q3").val(),
-          $("#q4").val(),
-          $("#q5").val(),
-          $("#q6").val(),
-          $("#q7").val(),
-          $("#q8").val(),
-          $("#q9").val(),
-          $("#q10").val()
-        ]
-      }
-
-      //Log it to make sure it's pretty
-      console.log(newFriend);
-
-      //Grab their URL location
-      var currentURL = window.location.origin;
-
-      //Then send a POST request to the API to add the newFriend data
-      $.post(currentURL + "/api/friendzone", newFriend, function(data) {
-
-        //Reset all the survey values to defaults
-        $("#username").val("");
-        $("#photo").val("");
-        $("#gender").val("");
-        $("#q1").val("");
-        $("#q2").val("");
-        $("#q3").val("");
-        $("#q4").val("");
-        $("#q5").val("");
-        $("#q6").val("");
-        $("#q7").val("");
-        $("#q8").val("");
-        $("#q9").val("");
-        $("#q10").val("");
-      })
-
-    })
-  
-  </script>
-    
+   
 
 </body>
 </html>

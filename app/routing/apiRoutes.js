@@ -1,7 +1,7 @@
 //API Routes are for the data.  These help determine what data the user sees as well as what data the user is able to post to the server to store
 
 //First, pull in the friendzone
-var friendList = require ('../data/friends.js');
+var friendList = require('./../data/friends.js');
 
 //The app represents 'Express' again
 module.exports = function (app) {
@@ -12,8 +12,8 @@ module.exports = function (app) {
     })
 
     //Build a POST route to allow users to post to the API
-    //
     app.post('/api/friendzone', function(req, res) {
-        friendZone.push(req.body);
+        console.log(req.body);
+        friendList.friendZone.push(req.body);
     })
 }
