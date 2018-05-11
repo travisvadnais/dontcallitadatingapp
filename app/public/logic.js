@@ -18,18 +18,18 @@ $(document).ready(function () {
     //Did it this way to avoid hardcoding 10 identical massive divs
     for (var i = 0; i < questions.length; i++) {
         var qDiv = 
-            "<div class='question'>"+
-                `<h3><b>Question: ` + questions[i].Question_Num + `</b></h3>
-                <h5 class="quesText">` + questions[i].Question + `</h5>
-                <div class="form-group">`+
-                    "<label for="+questions[i].Question_ID+"></label>"+
-                    "<select class='form-control' id="+questions[i].Question_ID+">"+
-                        `<option value="">Select an Answer</option>
-                        <option value="1">1 - Strongly Disagree</option>
-                        <option value="2">2</option>
-                        <option value="3">3 - Neither Agree Nor Disagree</option>
-                        <option value="4">4</option>
-                        <option value="5">5 - Strongly Agree</option>
+            `<div class='question'>
+                <h3><b>Question: ${questions[i].Question_Num} </b></h3>
+                <h5 class="quesText"> ${questions[i].Question} </h5>
+                <div class="form-group">
+                    <label for="${questions[i].Question_ID}"></label>
+                    <select class='form-control' id="${questions[i].Question_ID}">
+                        <option value="">Select an Answer</option>
+                        <option value=1>1 - Strongly Disagree</option>
+                        <option value=2>2</option>
+                        <option value=3>3 - Neither Agree Nor Disagree</option>
+                        <option value=4>4</option>
+                        <option value=5>5 - Strongly Agree</option>
                     </select>
                 </div>
             </div>`
@@ -37,56 +37,70 @@ $(document).ready(function () {
     }
 
 
-//When the user submits . . . . 
-$("#submitSurvey").on("click", function() {
+    //When the user submits . . . . 
+    $("#submitSurvey").on("click", function() {
       
-    //Set all of his/her data to the the newFriend object
-    var newFriend = {
-      userName: $("#username").val().trim(),
-      photo: $("#photo").val().trim(),
-      gender: $("#gender").val().trim(),
-      scores: [
-        $("#Q1").val(),
-        $("#Q2").val(),
-        $("#Q3").val(),
-        $("#Q4").val(),
-        $("#Q5").val(),
-        $("#Q6").val(),
-        $("#Q7").val(),
-        $("#Q8").val(),
-        $("#Q9").val(),
-        $("#Q10").val()
-      ]
-    }
+        //Set all of his/her data to the the newFriend object
+        var newFriend = {
+            userName: $("#username").val().trim(),
+            photo: $("#photo").val().trim(),
+            gender: $("#gender").val().trim(),
+            scores: [
+                $("#Q1").val(),
+                $("#Q2").val(),
+                $("#Q3").val(),
+                $("#Q4").val(),
+                $("#Q5").val(),
+                $("#Q6").val(),
+                $("#Q7").val(),
+                $("#Q8").val(),
+                $("#Q9").val(),
+                $("#Q10").val(),
+            ]
+        };
 
-    //Log it to make sure it's pretty
-    console.log(newFriend);
+        //Log it to make sure it's pretty
+        console.log(newFriend);
+        if (inputValidation(newFriend) == false) {
+            alert("Please Complete All Fields!")
+        } 
+        else {
+            //Trigger the modal if the userinput passes validation
+            $("#myModal").modal();
 
-    //Grab their URL location
-    var currentURL = window.location.origin;
+            //Scroll to the top of the page when user clicks
+            window.scrollTo(0,0);
 
-    //Then send a POST request to the API to add the newFriend data
-    $.post("/api/friendzone", newFriend, function(data) {
-
-      //Reset all the survey values to defaults
-      $("#username").val("");
-      $("#photo").val("");
-      $("#gender").val("");
-      $("#Q1").val("");
-      $("#Q2").val("");
-      $("#Q3").val("");
-      $("#Q4").val("");
-      $("#Q5").val("");
-      $("#Q6").val("");
-      $("#Q7").val("");
-      $("#Q8").val("");
-      $("#Q9").val("");
-      $("#Q10").val("");
+            //Then send a POST request to the API to add the newFriend data
+            $.post("/api/friendzone", newFriend, function(data) {
+                //Update the modal w/ the match's info
+                $("p.matchName").text(data.userName);
+                $("#matchPic").attr("src", data.photo);
+            })
+        } //End IF statement   
     })
-  })
 
-
-
-
-
-})
+    //Function to validate data and make sure there are no blank entries
+    //No additional comments - self-explanatory
+    function inputValidation(newFriend) {
+        if (newFriend.userName === "") {
+            return false;
+        } 
+        else if (newFriend.photo === "") {
+            return false;
+        }
+        else if (newFriend.gender === "") {
+            return false;
+        }
+        else {
+            for (var i = 0; i < newFriend.scores.length; i++) {
+                if (newFriend.scores[i] == "" || newFriend.scores[i] == "Select an Answer") {
+                    return false;
+                }
+                else {
+                    return;
+                }
+            }
+        }
+    }
+});

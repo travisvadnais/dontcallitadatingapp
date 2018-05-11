@@ -23,13 +23,20 @@
 </head> 
 
 <body>
-  <div class="jumbotron">
-    <h1>Find a cool new friend today!</h1>
-    <hr>
-    <!-- Button will send to survey.html when clicked -->
-    <button class="btn-success" onclick="location.href='./survey.html'">Start Survey!</button>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+
+        <div class="jumbotron">
+          <h1>Find a cool-ish new friend today!</h1>
+          <hr>
+          <!-- Button will send to survey.html when clicked -->
+          <button class="btn-success" onclick="location.href='./survey.html'">Start Survey!</button>
+        </div>
+        <div id = "testdiv"></div>
+      </div>
+    </div>
   </div>
-  <div id = "testdiv"></div>
   
 
 
@@ -57,7 +64,6 @@
         $.ajax({url: currentURL + "/api/friendzone", method: "GET"})
 
         .done(function(friendZone){
-                //18:20 to parse the data
             console.log("--------------------------------------");
             console.log("URL: " + currentURL + "/api/friendzone");
             console.log("--------------------------------------");

@@ -23,22 +23,49 @@
 </head> 
 
 <body>
+  <div class="jumbotron container">
+    <div class="container">
+    <h2>Answer all the questions and we'll find you a new friend!</h2>
+    <hr><br>
+    <h5>We'll also add your info to our site so other new people can match with you!</h5>
+    </div>
+  </div> <!--End Jumbotron Div-->
+
+  <!-- Modal -->
   <div class="container">
     <div class="row">
       <div class="col">
-        <div class="jumbotron">
-          <h2>Answer Truthfully to Get the Best Match!</h2><hr>
-        </div>
-      </div>
-    </div>
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Your Best Match Is: </h4>
+                <!--This is the 'x' button, and the &times; creates the 'x'-->
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div><!--End modal-header-->
+              <div class="modal-body">
+                <p class="matchName"></p>
+                <img id="matchPic">
+              </div><!--End Modal Body-->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div><!--End Modal Footer-->
+            </div><!--End Modal Content-->
+          </div><!--End Modal Dialog-->
+        </div><!--End My Modal Div-->
+      </div><!--End Column-->
+    </div><!-- End Row-->
+  </div><!--End Modal Container-->
 
   <div class="container">
     <div class="row">
       <div class="col">
-        <h3>About You</h3><hr>
-        <h5>First and Last Name (Required)</h5>
+        <h3>About You</h3>
+        <hr>
+        <h5>Your Username</h5>
         <input id="username" type="text" name="name" required placeholder="Enter Your Full Name" size="50"><br><br>
-        <h5>Your Profile Pic</h5>
+        <h5>Your Profile Pic (Link)</h5>
         <input id="photo" type="text" name="pic" required placeholder="Link to Your Profile Photo" size="100"><br><br>
         <h5>Gender</h5>
         <div class="form-group">
@@ -67,6 +94,9 @@
 
   <!-- Bootstrap JS MaxCDN -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- Validate JS CDN -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.12.0/validate.min.js"></script>
 
   <!-- Javascript reference -->
   <script type="text/javascript" src="../../server.js"></script>
